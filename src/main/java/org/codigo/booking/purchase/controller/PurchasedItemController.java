@@ -1,5 +1,6 @@
 package org.codigo.booking.purchase.controller;
 
+import org.codigo.booking.purchase.dto.PurchasedItemRequest;
 import org.codigo.booking.purchase.model.PurchasedItem;
 import org.codigo.booking.purchase.service.PurchasedItemService;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class PurchasedItemController {
     }
 
     @PostMapping
-    public PurchasedItem purchase(@RequestBody PurchasedItem purchasedItem) {
-        return purchasedItemService.save(purchasedItem);
+    public PurchasedItem purchase(@RequestBody PurchasedItemRequest request) {
+        return purchasedItemService.purchasedItem(request);
     }
 }

@@ -2,6 +2,7 @@ package org.codigo.booking.purchase.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codigo.booking.creditpackage.model.CreditPackage;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PurchasedItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
