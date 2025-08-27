@@ -2,6 +2,7 @@ package org.codigo.booking.user.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codigo.booking.creditpackage.model.Country;
@@ -18,6 +19,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User implements UserDetails {
 
     @Id

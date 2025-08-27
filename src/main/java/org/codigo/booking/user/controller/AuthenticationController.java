@@ -4,6 +4,7 @@ import org.codigo.booking.jwt.JwtService;
 import org.codigo.booking.user.dto.LoginRequest;
 import org.codigo.booking.user.dto.LoginResponse;
 import org.codigo.booking.user.model.User;
+import org.codigo.booking.user.model.UserRequest;
 import org.codigo.booking.user.service.AuthenticationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(@RequestBody User registerUser) {
+    public ResponseEntity<User> register(@RequestBody UserRequest registerUser) {
         User registeredUser = authenticationService.signup(registerUser);
 
         return ResponseEntity.ok(registeredUser);

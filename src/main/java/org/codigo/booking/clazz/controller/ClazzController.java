@@ -1,5 +1,6 @@
 package org.codigo.booking.clazz.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.codigo.booking.clazz.model.Clazz;
 import org.codigo.booking.clazz.service.ClazzService;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/classes")
+@SecurityRequirement(name = "bearerAuth")
 public class ClazzController {
     private final ClazzService clazzService;
 

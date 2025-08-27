@@ -1,5 +1,6 @@
 package org.codigo.booking.user.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.codigo.booking.user.model.User;
 import org.codigo.booking.user.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
     private final UserService userService;
 

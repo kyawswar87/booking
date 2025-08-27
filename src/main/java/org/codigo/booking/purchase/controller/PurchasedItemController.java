@@ -1,5 +1,6 @@
 package org.codigo.booking.purchase.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.codigo.booking.purchase.dto.PurchasedItemRequest;
 import org.codigo.booking.purchase.model.PurchasedItem;
 import org.codigo.booking.purchase.service.PurchasedItemService;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/purchases")
+@SecurityRequirement(name = "bearerAuth")
 public class PurchasedItemController {
 
     private final PurchasedItemService purchasedItemService;

@@ -17,11 +17,17 @@ public class UserService {
 
     public List<User> allUsers() {
         List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
+        userRepository.findAll()
+                .forEach(user -> {
+                    user.setPassword(null);
+                    users.add(user);
+                });
         return users;
     }
 
     public User findUserById(int id) {
-        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        var user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        user.setPassword(null);
+        return user;
     }
 }

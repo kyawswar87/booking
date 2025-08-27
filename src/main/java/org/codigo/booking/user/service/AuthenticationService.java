@@ -2,6 +2,7 @@ package org.codigo.booking.user.service;
 
 import org.codigo.booking.user.dto.LoginRequest;
 import org.codigo.booking.user.model.User;
+import org.codigo.booking.user.model.UserRequest;
 import org.codigo.booking.user.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,11 +29,18 @@ public class AuthenticationService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User signup(User input) {
-        input.setCreatedAt(LocalDateTime.now());
-        input.setUpdatedAt(LocalDateTime.now());
+    public User signup(UserRequest input) {
         input.setPassword(passwordEncoder.encode(input.getPassword()));
-        return userRepository.save(input);
+        var user = userRepository.save(
+                        User.builder()
+                                .password(input.getPassword())
+                                .fullName(input.getFullName())
+                                .email(input.getEmail())
+                                .country(input.getCountry())
+                                .build()
+        );
+        user.setPassword(null);
+        return user;
     }
 
     public User authenticate(LoginRequest input) {

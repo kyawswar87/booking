@@ -1,5 +1,6 @@
 package org.codigo.booking.creditpackage.service;
 
+import org.codigo.booking.creditpackage.model.Country;
 import org.codigo.booking.creditpackage.model.CreditPackage;
 import org.codigo.booking.creditpackage.repository.CreditPackageRepository;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,10 @@ public class CreditPackageService {
 
     public CreditPackage findById(Long id) {
         return creditPackageRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Id is null."));
+    }
+
+    public CreditPackage findByCountry(Country country) {
+        return creditPackageRepository.findByCountry(country).orElseThrow(() -> new IllegalArgumentException("Packages by country do not found"));
     }
 
     public List<CreditPackage> findAll() {
