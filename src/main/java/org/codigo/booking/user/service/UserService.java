@@ -20,4 +20,8 @@ public class UserService {
         userRepository.findAll().forEach(users::add);
         return users;
     }
+
+    public User findUserById(int id) {
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+    }
 }
